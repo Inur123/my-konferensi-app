@@ -60,6 +60,7 @@ export default function Home() {
                 alt="Logo IPNU"
                 width={100}
                 height={100}
+                unoptimized
                 className="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 lg:h-24 lg:w-24 object-contain transition-all duration-500 hover:scale-110 hover:rotate-6 drop-shadow-lg"
               />
             </div>
@@ -69,6 +70,7 @@ export default function Home() {
                 alt="Logo Konferensi"
                 width={100}
                 height={100}
+                unoptimized
                 className="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 lg:h-24 lg:w-24 object-contain transition-all duration-500 hover:scale-110 hover:rotate-6 drop-shadow-lg"
               />
             </div>
@@ -78,6 +80,7 @@ export default function Home() {
                 alt="Logo IPPNU"
                 width={100}
                 height={100}
+                unoptimized
                 className="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 lg:h-24 lg:w-24 object-contain transition-all duration-500 hover:scale-110 hover:rotate-6 drop-shadow-lg"
               />
             </div>
