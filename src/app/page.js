@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import "remixicon/fonts/remixicon.css";
 
-
 export default function Home() {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,

@@ -1,7 +1,10 @@
 @import "tailwindcss";
 
+/* Font smoothing */
 body {
   font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Floating animation */
@@ -9,38 +12,22 @@ body {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
 }
-
 .floating-animation {
   animation: float 6s ease-in-out infinite;
 }
-
-.floating-animation:nth-child(2) {
-  animation-delay: -2s;
-}
-
-.floating-animation:nth-child(3) {
-  animation-delay: -4s;
-}
-
-/* Pulse glow */
-@keyframes pulse-glow {
-  from { box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
-  to { box-shadow: 0 0 25px rgba(239, 68, 68, 0.8), 0 0 35px rgba(239, 68, 68, 0.4); }
-}
-
-.pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite alternate;
-}
+.floating-animation:nth-child(2) { animation-delay: -2s; }
+.floating-animation:nth-child(3) { animation-delay: -4s; }
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #dc2626, #ea580c, #d97706);
+  background: linear-gradient(135deg, #dc2626 0%, #ea580c 50%, #d97706 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: #dc2626; /* fallback */
 }
 
-/* Card hover */
+/* Card hover effect */
 .card-hover {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -49,15 +36,12 @@ body {
   box-shadow: 0 20px 40px -12px rgba(0,0,0,0.25);
 }
 
-/* Countdown */
+/* Countdown animation */
 @keyframes countPulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.05); }
 }
-
-.countdown-number {
-  animation: countPulse 1s ease-in-out infinite;
-}
+.countdown-number { animation: countPulse 1s ease-in-out infinite; }
 
 /* Background pattern */
 .bg-pattern {
@@ -67,8 +51,41 @@ body {
     radial-gradient(circle at 50% 50%, rgba(217, 119, 6, 0.05) 0%, transparent 50%);
 }
 
-/* Mobile */
+/* Gradients konsisten */
+.bg-gradient-to-br.from-red-500.to-red-600 {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+}
+.bg-gradient-to-br.from-orange-500.to-orange-600 {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+}
+.bg-gradient-to-br.from-yellow-500.to-yellow-600 {
+  background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%) !important;
+}
+.bg-gradient-to-br.from-green-500.to-green-600 {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%) !important;
+}
+.bg-gradient-to-r.from-red-600.via-orange-500.to-red-600 {
+  background: linear-gradient(to right, #dc2626 0%, #f97316 50%, #dc2626 100%) !important;
+}
+
+/* Mobile fix */
 @media (max-width: 640px) {
-  .floating-animation { animation: none; }
+  .floating-animation { animation: float 6s ease-in-out infinite !important; }
   .card-hover:hover { transform: translateY(-2px) scale(1.01); }
+  .gradient-text {
+    background: linear-gradient(135deg, #dc2626 0%, #ea580c 50%, #d97706 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Safari fix */
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    .gradient-text {
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+  }
 }
